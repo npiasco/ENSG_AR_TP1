@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project( AR_ENSG )
+project( ENSG_AR_TP1 )
 set(CMAKE_CXX_FLAGS "-std=c++11")
 
 find_package(OpenCV REQUIRED)
@@ -16,6 +16,7 @@ include_directories(
 
 set(ALL_LIBS
 	${OpenCV_LIBS}
+	${GLEW_LIBRARY}
 	${OPENGL_LIBRARY}
 	${OPENGL_gl_LIBS}
 	glfw
@@ -32,7 +33,8 @@ add_definitions(
 	-D_CRT_SECURE_NO_WARNINGS
 )
 
-add_executable(main main.cpp 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+add_executable(main ${PROJECT_SOURCE_DIR}/main.cpp 
 		opengl_code/Shader.cpp 
 		opengl_code/shaders/default.vertexshader 
 		opengl_code/shaders/default.fragmentshader
@@ -41,14 +43,14 @@ add_executable(main main.cpp
 target_link_libraries( main ${ALL_LIBS} )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/opencv_code/")
-add_executable(mainCV opencv_code/mainCV.cpp )
+add_executable(mainCV ${PROJECT_SOURCE_DIR}/opencv_code/mainCV.cpp )
 target_link_libraries(mainCV ${OpenCV_LIBS} apriltag)
 
-add_executable(testClass opencv_code/AprilTagReaderTest.cpp opencv_code/AprilTagReader.cpp )
+add_executable(testClass ${PROJECT_SOURCE_DIR}/opencv_code/AprilTagReaderTest.cpp opencv_code/AprilTagReader.cpp )
 target_link_libraries( testClass ${OpenCV_LIBS} apriltag)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/opencv_code/calib/")
-add_executable(calibration opencv_code/calib/camera_calibration.cpp )
+add_executable(calibration ${PROJECT_SOURCE_DIR}/opencv_code/calib/camera_calibration.cpp )
 target_link_libraries(calibration ${OpenCV_LIBS})
 
 
