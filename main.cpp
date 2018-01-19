@@ -129,7 +129,7 @@ int main()
 
     // Instanciation
     /*!|| A REMPLIR ||*/
-    float f = 800; // Focal de votre caméra
+    float f = 0; // Focal de votre caméra
     AprilTagReader reader(f);
     
     // Récupération de la 1ere image
