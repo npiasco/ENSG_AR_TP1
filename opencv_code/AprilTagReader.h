@@ -39,16 +39,16 @@ public:
     /**
     * Constructeur de la classe
     * 
+    * @param focal = distance focal de la caméra (en pixel)
     * @param camera_id = numéro de la caméra à ouvire (dev/videoX)
     * @param width = largeur désirée de l'image' (en pixel)
     * @param height = hauteur désirée de l'image' (en pixel)
-    * @param focal = distance focal de la caméra (en pixel)
     * @param cx = position en x du centre optique (en pixel)
     * @param cy = position en y du centre optique (en pixel)
     * @param tagSize = taille du tag (en cm)
     *
     **/
-    AprilTagReader(int camera_id=0, int width=640, int height=480, float focal=817.18087220476332, float cx=319.5, float cy=239.5, float tagSize=16.5);
+    AprilTagReader(float focal, int camera_id=0, int width=640, int height=480, float cx=319.5, float cy=239.5, float tagSize=16.5);
 
     /**
     * Destructeur

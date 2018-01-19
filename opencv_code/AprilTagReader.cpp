@@ -2,7 +2,7 @@
 
 
 
-AprilTagReader::AprilTagReader(int camera_id, int width, int height, float focal, float cx, float cy, float tagSize) :
+AprilTagReader::AprilTagReader(float focal, int camera_id, int width, int height, float cx, float cy, float tagSize) :
 cap(camera_id), cx(cx), cy(cy), tagSize(tagSize)
 {
     this->focal = focal * (float) height / (float) width;

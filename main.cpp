@@ -121,14 +121,16 @@ int main()
 
     /******************* Chargement des modeles 3D ***********************/
 
-    // ...
+    /*!|| A REMPLIR ||*/
     
     /*********************************************************************/
     
     /******************* Initialisation du detecteur *********************/
 
     // Instanciation
-    AprilTagReader reader(0,640,480);
+    /*!|| A REMPLIR ||*/
+    float f = 800; // Focal de votre caméra
+    AprilTagReader reader(f);
     
     // Récupération de la 1ere image
     cv::Mat image = reader.getImage();
@@ -139,12 +141,13 @@ int main()
 
     
     // Matrice de projection
+    /*!|| A REMPLIR ||*/
     glm::mat4 projection = glm::mat4(1.0f);
     
     // Matrice de position de la caméra
     glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    // Envoie de la matrice de projection aux shaders
+    // Envoie des matrices de projection et de vue aux shaders
     shader.Use();
     glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
@@ -180,8 +183,8 @@ int main()
         
         /********************** On positionne l'image ************************/
         
-        glm::mat4 model;
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+        /*!|| A REMPLIR ||*/
+        glm::mat4 model(1.0f);
         // On passe la position de l'objet au shader
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
@@ -200,7 +203,7 @@ int main()
         /********************* Affichage des éléments 3D *********************/
         lightshader.Use();
 
-        // ...
+        /*!|| A REMPLIR ||*/
         
         /*********************************************************************/
     
