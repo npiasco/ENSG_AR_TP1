@@ -57,9 +57,9 @@ std::vector<TagData> const AprilTagReader::getTags(){
         
         TagData data;
 
-        data.position[0]=matd_get(m, 0,3)*this->tagSize/2;
-        data.position[1]=matd_get(m, 1,3)*this->tagSize/2;
-        data.position[2]=matd_get(m, 2,3)*this->tagSize/2;
+        data.position[0]=-matd_get(m, 0,3)*this->tagSize/2;
+        data.position[1]=-matd_get(m, 1,3)*this->tagSize/2;
+        data.position[2]=-matd_get(m, 2,3)*this->tagSize/2;
 
 
         for(int l=0;l<3;++l)
