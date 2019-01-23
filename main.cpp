@@ -175,9 +175,9 @@ int main()
 		glBindTexture(GL_TEXTURE_2D , texture );//  Association du numero de la texture  pour le  shader
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.cols, image.rows,0, GL_BGR, GL_UNSIGNED_BYTE, image.ptr());
 		glUniform1i(glGetUniformLocation(shader.Program , "modelTexture"), 0);        
-        glm::mat4 model(1.0f); // Matrice identite
+        glm::mat4 texture_model(1.0f); // Matrice identite
         // On passe la position de l'objet au shader
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(texture_model));
 
         /*********************************************************************/
 
@@ -191,6 +191,7 @@ int main()
         /*********************************************************************/
 
         /********************* Affichage des éléments 3D *********************/
+        glm::mat4 model(1.0f);
         lightshader.Use();
 
         /*!|| A REMPLIR ||*/
