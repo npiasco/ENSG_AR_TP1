@@ -76,10 +76,10 @@ int main()
 
 	GLfloat vertices[] = {
         /*     Positions    |      Normales     |     UV     */
-       1.0f,  1.0f, 0.0f,   0.0f, 0.0f, 0.0f,   1.0f, 1.0f, // Top Right
-       1.0f, -1.0f, 0.0f,   0.0f, 0.0f, 0.0f,   1.0f, 0.0f, // Bottom Right
-      -1.0f, -1.0f, 0.0f,   0.0f, 0.0f, 0.0f,   0.0f, 0.0f, // Bottom Left
-      -1.0f,  1.0f, 0.0f,   0.0f, 0.0f, 0.0f,   0.0f, 1.0f  // Top Left
+       1.0f,  1.0f, 0.0f,   0.0f, 0.0f, 1.0f,   1.0f, 1.0f, // Top Right
+       1.0f, -1.0f, 0.0f,   0.0f, 0.0f, 1.0f,   1.0f, 0.0f, // Bottom Right
+      -1.0f, -1.0f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // Bottom Left
+      -1.0f,  1.0f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f  // Top Left
     };
     
     GLshort indices[]{
@@ -157,8 +157,7 @@ int main()
     
     /*********************************************************************/
 
-    
-    // Game loop
+    // Main loop
     while(!glfwWindowShouldClose(window))
     {
         // Récupération des evenements et maj du fond
@@ -172,25 +171,16 @@ int main()
 
         shader.Use();
         image = reader.getImage();
-        cv::flip(image, image, 0);
 		glActiveTexture(GL_TEXTURE0 );//  Binding  de  notre  texture
 		glBindTexture(GL_TEXTURE_2D , texture );//  Association du numero de la texture  pour le  shader
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.cols, image.rows,0, GL_BGR, GL_UNSIGNED_BYTE, image.ptr());
-		glUniform1i(glGetUniformLocation(shader.Program , "modelTexture"), 0);
-        
-        /*********************************************************************/
-
-        
-        /********************** On positionne l'image ************************/
-        
-        /*!|| A REMPLIR ||*/
-        glm::mat4 model(1.0f);
+		glUniform1i(glGetUniformLocation(shader.Program , "modelTexture"), 0);        
+        glm::mat4 model(1.0f); // Matrice identite
         // On passe la position de l'objet au shader
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
         /*********************************************************************/
 
-        
         /************************ On dessine l'image *************************/
 
         glBindVertexArray(VAO);
