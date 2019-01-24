@@ -163,7 +163,7 @@ int main(int argc, char *argv[])
         zarray_destroy(detections);
 
         imshow("Tag Detections", frame);
-        if (waitKey(1) >= 0)
+        if (waitKey(1) != 255)
             break;
     }
 
